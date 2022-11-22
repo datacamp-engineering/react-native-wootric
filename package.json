@@ -1,6 +1,6 @@
 {
   "name": "@datacamp/react-native-wootric",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Fork of @wootric/react-native-wootric",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wootric/react-native-wootric"
+    "url": "https://github.com/datacamp-engineering/react-native-wootric"
   },
-  "homepage": "https://github.com/Wootric/react-native-wootric#readme",
+  "homepage": "https://github.com/datacamp-engineering/react-native-wootric#readme",
   "author": "Wootric",
   "license": "MIT"
 }
