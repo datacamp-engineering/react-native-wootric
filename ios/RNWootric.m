@@ -69,10 +69,10 @@ RCT_EXPORT_METHOD(showSurvey) {
 RCT_EXPORT_METHOD(setCustomThankYou:(NSDictionary *)options) {
   NSString *promoterMessage=options[@"promoterMessage"];
   NSString *promoterText=options[@"promoterText"];
-  NSURL *promoterLink=options[@"promoterLink"];
+  NSString *promoterLinkString=options[@"promoterLink"];
   NSString *passiveMessage=options[@"passiveMessage"];
   NSString *passiveText=options[@"passiveText"];
-  NSURL *passiveLink=options[@"passiveLink"];
+  NSString *passiveLinkString=options[@"passiveLink"];
 
   if (promoterMessage){
     [Wootric setPromoterThankYouMessage: promoterMessage];
@@ -80,11 +80,14 @@ RCT_EXPORT_METHOD(setCustomThankYou:(NSDictionary *)options) {
   if (passiveMessage) {
     [Wootric setPassiveThankYouMessage: passiveMessage];
   }
-  if (passiveText && passiveLink){
-    [Wootric setPassiveThankYouLinkWithText: passiveText URL:passiveLink];
+  if (passiveText && passiveLinkString){
+    NSURL *passiveLinkUrl = [NSURL URLWithString:passiveLinkString];
+    [Wootric setPassiveThankYouLinkWithText: passiveText URL:passiveLinkUrl];
   }
-  if (promoterText && promoterLink) {
-    [Wootric setPromoterThankYouLinkWithText: promoterText URL:promoterLink];
+  if (promoterText && promoterLinkString) {
+    NSURL *promoterLinkUrl = [NSURL URLWithString:promoterLinkString];
+    [Wootric setPromoterThankYouLinkWithText: promoterText URL:promoterLinkUrl];
   }
 }
 @end
+  
