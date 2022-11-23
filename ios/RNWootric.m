@@ -66,12 +66,25 @@ RCT_EXPORT_METHOD(showSurvey) {
   [Wootric showSurveyInViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
 }
 
-RCT_EXPORT_METHOD(setPromoterThankYouLinkWithText:(NSString *)text url:(NSURL *)URL) {
-  [Wootric setPromoterThankYouLinkWithText:text URL:URL];
-}
+RCT_EXPORT_METHOD(setCustomThankYou:(NSDictionary *)options) {
+  NSString *promoterMessage=options[@"promoterMessage"];
+  NSString *promoterText=options[@"promoterText"];
+  NSURL *promoterLink=options[@"promoterLink"];
+  NSString *passiveMessage=options[@"passiveMessage"];
+  NSString *passiveText=options[@"passiveText"];
+  NSURL *passiveLink=options[@"passiveLink"];
 
-RCT_EXPORT_METHOD(setPassiveThankYouLinkWithText:(NSString *)text url:(NSURL *)URL) {
-  [Wootric setPassiveThankYouLinkWithText:text URL:URL];
+  if (promoterMessage){
+    [Wootric setPromoterThankYouMessage: promoterMessage];
+  }
+  if (passiveMessage) {
+    [Wootric setPassiveThankYouMessage: passiveMessage];
+  }
+  if (passiveText && passiveLink){
+    [Wootric setPassiveThankYouLinkWithText: passiveText URL:passiveLink];
+  }
+  if (promoterText && promoterLink) {
+    [Wootric setPromoterThankYouLinkWithText: promoterText URL:promoterLink];
+  }
 }
 @end
-  

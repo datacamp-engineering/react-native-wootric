@@ -175,24 +175,35 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void setPromoterThankYouLinkWithText(String promoterLinkText, String promoterLinkUri ) {
+  public void setCustomThankYou(ReadableMap options ) {
 
     WootricCustomThankYou customThankYou = new WootricCustomThankYou();
 
-    customThankYou.setPromoterLinkUri(Uri.parse(promoterLinkUri));
-    customThankYou.setPromoterLinkText(promoterLinkText);
+    String promoterMessage = options.getString("promoterMessage"); 
+    String promoterText = options.getString("promoterText"); 
+    String promoterLink = options.getString("promoterLink"); 
+    String passiveMessage = options.getString("passiveMessage"); 
+    String passiveText = options.getString("passiveText"); 
+    String passiveLink = options.getString("passiveLink"); 
 
-    if (wootric == null) return;
-    wootric.setCustomThankYou(customThankYou);
-  }
-
-  @ReactMethod
-  public void setPassiveThankYouLinkWithText(String passiveLinkText, String passiveLinkUri ) {
-
-    WootricCustomThankYou customThankYou = new WootricCustomThankYou();
-
-    customThankYou.setPassiveLinkUri(Uri.parse(passiveLinkUri));
-    customThankYou.setPassiveLinkText(passiveLinkText);
+    if (promoterMessage != null) {
+      customThankYou.setPromoterText(promoterMessage);
+    }
+    if (promoterLink != null) {
+      customThankYou.setPromoterLinkUri(Uri.parse(promoterLink));
+    }
+    if (promoterText != null) {
+     customThankYou.setPromoterLinkText(promoterText);
+    }
+    if (passiveMessage != null) {
+      customThankYou.setPassiveText(passiveMessage);
+    }
+    if (passiveLink != null) {
+      customThankYou.setPassiveLinkUri(Uri.parse(passiveLink));
+    }
+    if (passiveText != null) {
+     customThankYou.setPassiveLinkText(passiveText);
+    }
     
     if (wootric == null) return;
     wootric.setCustomThankYou(customThankYou);

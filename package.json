@@ -1,6 +1,6 @@
 {
   "name": "@datacamp/react-native-wootric",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Fork of @wootric/react-native-wootric",
   "main": "index.js",
   "scripts": {
